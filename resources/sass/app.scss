@@ -14,22 +14,25 @@
 
     strong {
         display: block;
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .vote, .answer {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
 
     .status {
         &.answered {
+            margin: 5px;
             border: 1px solid $color-green;
             color: $color-green;
         }
 
         &.unanswered {
-            border: none;
+            margin: 5px;
+            border: 1px solid $color-red;
+            color: $color-red;
         }
 
         &.answered-accepted {
@@ -38,6 +41,12 @@
         }
     }
 
+}
+
+.media-body {
+    a {
+        text-decoration: none;
+    }
 }
 
 

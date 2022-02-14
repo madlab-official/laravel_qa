@@ -11293,20 +11293,27 @@ textarea.form-control-lg {
 }
 .counters strong {
   display: block;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .counters .vote, .counters .answer {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
 }
 .counters .status.answered {
+  margin: 5px;
   border: 1px solid #5fbb7e;
   color: #5fbb7e;
 }
 .counters .status.unanswered {
-  border: none;
+  margin: 5px;
+  border: 1px solid #ff3232;
+  color: #ff3232;
 }
 .counters .status.answered-accepted {
   background-color: #5fbb7e;
   color: #5fbb7e;
+}
+
+.media-body a {
+  text-decoration: none;
 }
