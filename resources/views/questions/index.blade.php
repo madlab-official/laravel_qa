@@ -29,7 +29,7 @@
                                         <small class="text-muted">{{$question->created_date}}</small>
                                     </p>
                                     <p class="justify-content-around">
-                                        {{Str::limit($question->body,500)}}
+                                        {{Str::limit($question->body,400)}}
                                     </p>
 
                                 </div>
