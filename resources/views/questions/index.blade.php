@@ -18,8 +18,8 @@
 
                     <div class="card-body">
                         @foreach($questions as $question)
-                            <div class="media d-flex flex-row">
-                                <div class="d-flex flex-column counters">
+                            <div class="media d-flex">
+                                <div class="counters">
                                     <div class="vote">
                                         <strong>{{$question->votes}}</strong>{{ Str::plural(' vote',$question->votes)}}
                                     </div>
@@ -30,16 +30,37 @@
                                         {{$question->views.Str::plural(' view',$question->views)}}
                                     </div>
                                 </div>
-                                <div class="media-body d-flex flex-column">
-                                    <h3 class="mt-0"><a href="{{$question->url}}">{{$question->title}}</a></h3>
-                                    <p class="lead">
-                                        Asked By
-                                        <a href="{{$question->user->url}}">{{$question->user->name}}</a>
-                                        <small class="text-muted">{{$question->created_date}}</small>
-                                    </p>
-                                    <p class="text-justify">
-                                        {{Str::limit($question->body,400)}}
-                                    </p>
+                                <div class="media-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="a">
+                                            <h3 class="mt-0"><a href="{{$question->url}}">{{$question->title}}</a></h3>
+                                            <p class="lead">
+                                                Asked By
+                                                <a href="{{$question->user->url}}">{{$question->user->name}}</a>
+                                                <small class="text-muted">{{$question->created_date}}</small>
+                                            </p>
+                                            <p class="text-justify">
+                                                {{Str::limit($question->body,400)}}
+                                            </p>
+                                        </div>
+                                        <div class="ml-auto">
+                                            @if(auth()->user()->can('update-question',$question))
+                                                <a href="{{route('questions.edit',$question->id)}}"
+                                                   class="btn btn-sm btn-outline-info">Edit</a>
+                                            @endif
+                                            @if(auth()->user()->can('delete-question',$question))
+                                                <form class="form-delete"
+                                                      action="{{route('questions.destroy',$question->id)}}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn btn-sm btn-outline-danger" type="submit"
+                                                            onclick="return confirm('Are you sure?')">Delete
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>

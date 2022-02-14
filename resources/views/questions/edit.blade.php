@@ -7,17 +7,18 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <h2>{{ __('Create Question') }}</h2>
+                            <h2>{{ __('Edit Question') }}</h2>
                             <div class="ml-auto">
-                                <a href="{{route('questions.index')}}" class="btn btn-outline-secondary">Back
-                                    Question</a>
+                                <a href="{{route('questions.index')}}" class="btn btn-outline-secondary">Back To
+                                    Questions</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{route('questions.store')}}" method="post">
-                                @include('questions._form',['buttonText'=>'Submit'])
+                        <form action="{{route('questions.update',$question->id)}}" method="post">
+                            {{method_field('PUT')}}
+                            @include('questions._form',['buttonText'=>'Update'])
                         </form>
                     </div>
                 </div>
