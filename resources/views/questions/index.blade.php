@@ -2,10 +2,19 @@
 
 @section('content')
     <div class="container">
+        @include('layouts._message')
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('All Question') }}</div>
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between">
+                            <h2>{{ __('All Question') }}</h2>
+                            <div class="ml-auto">
+                                <a href="{{route('questions.create')}}" class="btn btn-outline-secondary">Ask
+                                    Question</a>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="card-body">
                         @foreach($questions as $question)
@@ -28,7 +37,7 @@
                                         <a href="{{$question->user->url}}">{{$question->user->name}}</a>
                                         <small class="text-muted">{{$question->created_date}}</small>
                                     </p>
-                                    <p class="justify-content-around">
+                                    <p class="text-justify">
                                         {{Str::limit($question->body,400)}}
                                     </p>
 
