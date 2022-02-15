@@ -44,11 +44,11 @@
                                             </p>
                                         </div>
                                         <div class="ml-auto">
-                                            @if(auth()->user()->can('update-question',$question))
+                                            @can ('update', $question)
                                                 <a href="{{route('questions.edit',$question->id)}}"
                                                    class="btn btn-sm btn-outline-info">Edit</a>
-                                            @endif
-                                            @if(auth()->user()->can('delete-question',$question))
+                                            @endcan
+                                            @can ('delete', $question)
                                                 <form class="form-delete"
                                                       action="{{route('questions.destroy',$question->id)}}"
                                                       method="post">
@@ -58,7 +58,7 @@
                                                             onclick="return confirm('Are you sure?')">Delete
                                                     </button>
                                                 </form>
-                                            @endif
+                                            @endcan
                                         </div>
                                     </div>
 

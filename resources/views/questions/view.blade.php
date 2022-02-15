@@ -18,6 +18,9 @@
                     <div class="card-body">
                         {!! $question->body !!}
                     </div>
+                    <div class="text-center text-muted">
+                        {{"By ".$question->user->name}}
+                    </div>
                 </div>
             </div>
         </div>

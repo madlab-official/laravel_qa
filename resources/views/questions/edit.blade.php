@@ -20,6 +20,9 @@
                             {{method_field('PUT')}}
                             @include('questions._form',['buttonText'=>'Update'])
                         </form>
+                        <div class="text-center text-muted">
+                            {{"By ".$question->user->name}}
+                        </div>
                     </div>
                 </div>
             </div>
