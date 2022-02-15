@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         @include('layouts._message')
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -24,7 +24,7 @@
                                         <strong>{{$question->votes}}</strong>{{ Str::plural(' vote',$question->votes)}}
                                     </div>
                                     <div class="status {{$question->status}}">
-                                        <strong>{{$question->answers}}</strong>{{Str::plural(' answer',$question->answers)}}
+                                        <strong>{{$question->answers_count}}</strong>{{Str::plural(' answer',$question->answers_count)}}
                                     </div>
                                     <div class="view">
                                         {{$question->views.Str::plural(' view',$question->views)}}
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="d-flex justify-content-between">
-                                        <div class="a">
+                                        <div>
                                             <h3 class="mt-0"><a href="{{$question->url}}">{{$question->title}}</a></h3>
                                             <p class="lead">
                                                 Asked By
@@ -43,7 +43,7 @@
                                                 {{Str::limit($question->body,400)}}
                                             </p>
                                         </div>
-                                        <div class="ml-auto">
+                                        <div>
                                             @can ('update', $question)
                                                 <a href="{{route('questions.edit',$question->id)}}"
                                                    class="btn btn-sm btn-outline-info">Edit</a>
