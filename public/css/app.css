@@ -11290,6 +11290,14 @@ textarea.form-control-lg {
   text-align: justify;
 }
 
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
 .counters {
   margin-right: 30px;
   font-size: 10px;
@@ -11327,4 +11335,8 @@ textarea.form-control-lg {
 
 form.form-delete {
   display: inline;
+}
+
+.float-right {
+  float: right;
 }
