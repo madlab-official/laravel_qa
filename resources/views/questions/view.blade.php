@@ -15,10 +15,27 @@
                         </div>
                     </div>
 
-                    <div class="card-body">
-                        {!! $question->body !!}
+                    <div class="card-body  d-flex justify-content-between">
+                        <div class=" vote-controls">
+                            <a title="This question is useful" class="vote-up">
+                                <i class="fas fa-caret-up fa-3x"></i>
+                            </a>
+                            <span class="votes-count">1234</span>
+                            <a title="This question is not useful" class="vote-down">
+                                <i class="fas fa-caret-down fa-3x"> </i>
+                            </a>
+
+                            <a title="Click to mark as favorite question" class="vote-down mt-2 favorite favorited">
+                                <i class="fas fa-star fa-2x"> </i>
+                                <span class="favorites-count">1234</span>
+                            </a>
+                        </div>
+                        <div class="text-justify">
+                            {!! $question->body !!}
+                        </div>
                     </div>
-                    <div class="card-footer text-center text-muted">
+
+                    <div class="card-footer text-muted text-center">
                         {{"By ".$question->user->name}}
                     </div>
                 </div>
@@ -35,12 +52,31 @@
                         @foreach($question->answers as $answer)
                             <div class="media">
                                 <div class="media-body">
-                                    {!! $answer->body !!}
-                                    <div class="text-right" >
+                                    <div class="d-flex justify-content-between">
+                                        <div class=" vote-controls">
+                                            <a title="This answer is useful" class="vote-up">
+                                                <i class="fas fa-caret-up fa-3x"></i>
+                                            </a>
+                                            <span class="votes-count">1234</span>
+                                            <a title="This answer is not useful" class="vote-down">
+                                                <i class="fas fa-caret-down fa-3x"> </i>
+                                            </a>
+
+                                            <a title="Click to mark as favorite answer" class="vote-down mt-2 vote-accepted">
+                                                <i class="fas fa-check fa-2x"> </i>
+                                            </a>
+                                        </div>
+
+                                        <div class=" text-justify">
+                                            {!! $answer->body !!}
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
                                         <span class="text-muted">Answered {{$answer->created_date}}</span>
                                         <div class="media mt-2">
                                             <a href="{{$answer->user->url}}" class="pr-2">
-                                                <img src="{{$answer->user->avatar}}" alt="{{$answer->user->url}}" width="20px">
+                                                <img src="{{$answer->user->avatar}}" alt="{{$answer->user->url}}"
+                                                     width="20px">
                                             </a>
                                             <a href="{{$answer->user->url}}">{{$answer->user->name}}</a>
                                         </div>
