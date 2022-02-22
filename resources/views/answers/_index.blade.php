@@ -19,7 +19,8 @@
                                         <i class="fas fa-caret-down fa-3x"> </i>
                                     </a>
 
-                                    <a title="Click to mark as favorite answer" class="vote-down mt-2 vote-accepted">
+                                    <a title="Click to mark as favorite answer"
+                                       class="vote-down mt-2 {{$answer->status}}">
                                         <i class="fas fa-check fa-2x"> </i>
                                     </a>
                                 </div>
@@ -29,6 +30,23 @@
                                 </div>
                             </div>
                             <div class="text-right">
+                                <div class="edit-delete-button">
+                                    @can ('update', $answer)
+                                        <a href="{{route('questions.answers.edit',[$question->id,$answer->id])}}"
+                                           class="btn btn-sm btn-outline-info">Edit</a>
+                                    @endcan
+                                    @can ('delete', $answer)
+                                        <form class="form-delete"
+                                              action="{{route('questions.answers.destroy',[$question->id,$answer->id])}}"
+                                              method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="btn btn-sm btn-outline-danger" type="submit"
+                                                    onclick="return confirm('Are you sure?')">Delete
+                                            </button>
+                                        </form>
+                                    @endcan
+                                </div>
                                 <span class="text-muted">Answered {{$answer->created_date}}</span>
                                 <div class="media mt-2">
                                     <a href="{{$answer->user->url}}" class="pr-2">
