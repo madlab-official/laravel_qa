@@ -14,7 +14,8 @@ class Question extends Model
     protected $fillable =
         [
             'title',
-            'body'
+            'body',
+            'best_answer_id'
         ];
 
     public function user()
@@ -49,8 +50,16 @@ class Question extends Model
         return 'unanswered';
     }
 
-    public function answers(){
+    public function answers()
+    {
         return $this->hasMany(Answer::class);
+    }
+
+
+    public function acceptBestAnswer(Answer $answer)
+    {
+        $this->best_answer_id = $answer->id;
+        $this->save();
     }
 
 }

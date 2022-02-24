@@ -18,11 +18,26 @@
                                     <a title="This answer is not useful" class="vote-down">
                                         <i class="fas fa-caret-down fa-3x"> </i>
                                     </a>
-
-                                    <a title="Click to mark as favorite answer"
-                                       class="vote-down mt-2 {{$answer->status}}">
-                                        <i class="fas fa-check fa-2x"> </i>
-                                    </a>
+                                    @can('accept',$answer)
+                                        <a title="Click to mark as favorite answer"
+                                           class="vote-down mt-2 {{$answer->status}}"
+                                           onclick="event.preventDefault();document.getElementById('accept-answer-{{$answer->id}}').submit();"
+                                        >
+                                            <i class="fas fa-check fa-2x"> </i>
+                                        </a>
+                                        <form id="accept-answer-{{$answer->id}}"
+                                              action="{{route('answers.accept',$answer->id)}}" method="post"
+                                              style="display: none;">
+                                            @csrf
+                                        </form>
+                                    @else
+                                        @if($answer->is_best)
+                                            <a title="Accepted best answer bt owner"
+                                               class="vote-down mt-2 {{$answer->status}}">
+                                                <i class="fas fa-check fa-2x"> </i>
+                                            </a>
+                                        @endif
+                                    @endcan
                                 </div>
 
                                 <div class=" text-justify">
