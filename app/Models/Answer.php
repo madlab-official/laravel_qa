@@ -60,4 +60,9 @@ class Answer extends Model
     {
         return $this->id === $this->question->best_answer_id ? 'vote-accepted' : '';
     }
+
+    public function votes()
+    {
+        return $this->morphedByMany(User::class, 'votable');
+    }
 }
